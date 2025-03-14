@@ -27,5 +27,5 @@ controller:
           app.kubernetes.io/instance: ingress-nginx
   minAvailable: 2
   ingressClassResource:
-    name: nginx
+    name: nginx-tls
     default: false
