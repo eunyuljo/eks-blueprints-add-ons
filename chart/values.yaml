@@ -118,6 +118,7 @@ gatekeeper:
 ingressNginx:
   enable: false
   createNamespace: true
+  targetRevision : "4.10.1"
 
 # Grafana default Values
 grafana:
