@@ -118,6 +118,7 @@ gatekeeper:
 ingressNginx:
   enable: false
   createNamespace: true
+  chartVersion: "4.12.0"
 
 # Grafana default Values
 grafana:
