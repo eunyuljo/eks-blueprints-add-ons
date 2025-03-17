@@ -1,9 +1,0 @@
-settings:
-  aws:
-    clusterName: workspace1
-    defaultInstanceProfile: "karpenter-workspace1-20250317045252276100000012"
-    subnetSelector: 
-      "karpenter.sh/discovery": "workspace1"  
-    securityGroupSelector:
-      "karpenter.sh/discovery": "workspace1"
-
