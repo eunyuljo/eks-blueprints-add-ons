@@ -28,7 +28,7 @@ spec:
           - clusters:
               selector:
                 matchLabels:
-                  environment: staging
+                  environment: workspace1
               values:
                 addonChartVersion: 4.10.1
           - clusters:
