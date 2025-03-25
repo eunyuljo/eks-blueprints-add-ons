@@ -65,7 +65,6 @@ spec:
       destination:
         namespace: '{{metadata.annotations.karpenter_namespace}}'
         name: '{{name}}'
-        server: '{{cluster.server}}'
       syncPolicy:
         automated: {}
         syncOptions:
