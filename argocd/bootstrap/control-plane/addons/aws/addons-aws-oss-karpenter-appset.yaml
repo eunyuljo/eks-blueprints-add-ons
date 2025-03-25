@@ -31,7 +31,7 @@ spec:
                 matchLabels:
                   environment: workspace1
               values:
-                addonChartVersion: v0.30.0
+                addonChartVersion: 0.37.0
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
