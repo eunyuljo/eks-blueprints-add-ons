@@ -68,18 +68,4 @@ spec:
         automated: {}
         syncOptions:
           - CreateNamespace=true
-          - ServerSideApply=true # Big CRDs.
-      ignoreDifferences:                # ← syncPolicy 바로 아래
-          - group: rbac.authorization.k8s.io
-            kind: ClusterRole
-            jsonPointers:
-              - /metadata/managedFields
-              - /metadata/annotations/argocd.argoproj.io~1tracking-id
-          - group: rbac.authorization.k8s.io
-            kind: ClusterRoleBinding
-            jsonPointers:
-              - /metadata/managedFields
-          - group: "*"
-            kind: "*"
-            jsonPointers:
-              - /status  
+          #- ServerSideApply=true # Big CRDs.
