@@ -36,7 +36,7 @@ spec:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
       annotations:
-        argocd.argoproj.io/sync-options: SkipDrynRunOnMissingResource=true
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     spec:
       project: default
       sources:
