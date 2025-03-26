@@ -52,6 +52,7 @@ spec:
               - $values/{{metadata.annotations.addons_repo_basepath}}environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
               - $values/{{metadata.annotations.addons_repo_basepath}}clusters/{{name}}/addons/{{values.addonChart}}/values.yaml
             values: |
+            
               settings:
                   clusterName: {{metadata.annotations.aws_cluster_name}}
                   aws:
@@ -61,6 +62,7 @@ spec:
                 name: {{metadata.annotations.karpenter_service_account}}
                 annotations:
                   eks.amazonaws.com/role-arn: {{metadata.annotations.karpenter_iam_role_arn}}
+              crds:
       destination:
         namespace: '{{metadata.annotations.karpenter_namespace}}'
         name: '{{name}}'
