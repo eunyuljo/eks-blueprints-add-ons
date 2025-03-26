@@ -70,12 +70,12 @@ spec:
           - CreateNamespace=true
           - ServerSideApply=true # Big CRDs.
         ignoreDifferences:
+        - group: rbac.authorization.k8s.io
+          kind: ClusterRole
+          jsonPointers:
+          - /metadata/managedFields
+          - /metadata/annotations/argocd.argoproj.io~1tracking-id
         - group: "*"
           kind: "*"
           jsonPointers:
-          - /metadata/managedFields
           - /status
-        - group: apiextensions.k8s.io
-          kind: CustomResourceDefinition
-          jsonPointers:
-          - /spec/versions/.*\/schema/openAPIV3Schema/default
