@@ -3,8 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: addons-aws-karpenter
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
 spec:
   syncPolicy:
     preserveResourcesOnDeletion: true
@@ -37,6 +35,8 @@ spec:
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
+      annotations:
+        argocd.argoproj.io/sync-options: SkiptDrynRunonMissingResource=true
     spec:
       project: default
       sources:
