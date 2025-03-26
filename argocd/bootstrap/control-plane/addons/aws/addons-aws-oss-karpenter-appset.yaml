@@ -69,3 +69,9 @@ spec:
         syncOptions:
           - CreateNamespace=true
           - ServerSideApply=true # Big CRDs.
+        ignoreDifferences:
+        - group: "*"
+          kind: "*"
+          jsonPointers:
+          - /metadata/managedFields
+          - /status
