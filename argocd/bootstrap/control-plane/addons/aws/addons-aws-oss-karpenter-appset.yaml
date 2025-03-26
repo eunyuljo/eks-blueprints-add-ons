@@ -69,19 +69,17 @@ spec:
         syncOptions:
           - CreateNamespace=true
           - ServerSideApply=true # Big CRDs.
-        ignoreDifferences:
-        # ClusterRole 과 RoleBinding 등 RBAC 리소스에서 ManagedFields/Tracking-ID 무시
-        - group: rbac.authorization.k8s.io
-          kind: ClusterRole
-          jsonPointers:
-          - /metadata/managedFields
-          - /metadata/annotations/argocd.argoproj.io~1tracking-id
-        - group: rbac.authorization.k8s.io
-          kind: ClusterRoleBinding
-          jsonPointers:
-          - /metadata/managedFields
-        # 모든 리소스의 status 필드 무시
-        - group: "*"
-          kind: "*"
-          jsonPointers:
-          - /status
+      ignoreDifferences:                # ← syncPolicy 바로 아래
+          - group: rbac.authorization.k8s.io
+            kind: ClusterRole
+            jsonPointers:
+              - /metadata/managedFields
+              - /metadata/annotations/argocd.argoproj.io~1tracking-id
+          - group: rbac.authorization.k8s.io
+            kind: ClusterRoleBinding
+            jsonPointers:
+              - /metadata/managedFields
+          - group: "*"
+            kind: "*"
+            jsonPointers:
+              - /status  
