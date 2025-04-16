@@ -24,14 +24,14 @@ spec:
                     operator: NotIn
                     values: [in-cluster]
                   - key: enable_karpenter
-                    operator: In
+                    operator: In 
                     values: ['true']
           - clusters:
               selector:
                 matchLabels:
                   environment: workspace1
               values:
-                addonChartVersion: 1.3.3
+                addonChartVersion: 1.1.1
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
