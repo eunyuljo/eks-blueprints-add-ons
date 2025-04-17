@@ -17,6 +17,13 @@ spec:
                   - key: enable_kube_ops_view
                     operator: In
                     values: ['true']
+          - clusters:
+              selector:
+                matchLabels:
+                  environment: workspace1
+              values:
+                addonChartVersion: 1.1.1
+
   template:
     metadata:
       name: 'addon-{{name}}-{{values.addonChart}}'
@@ -45,3 +52,4 @@ spec:
         automated: {}
         syncOptions:
           - CreateNamespace=true
+          - ServerSideApply=true # Big CRDs.          
