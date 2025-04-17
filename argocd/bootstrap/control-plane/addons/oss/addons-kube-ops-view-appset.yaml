@@ -9,7 +9,7 @@ spec:
         generators:
           - clusters:
               values:
-                addonChart: kube-ops-view
+                addonChart: christianhuth
                 addonChartVersion: 3.6.1
                 addonChartRepository: https://charts.christianhuth.de
               selector:
