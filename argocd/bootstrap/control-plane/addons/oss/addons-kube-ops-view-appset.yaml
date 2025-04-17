@@ -10,8 +10,8 @@ spec:
           - clusters:
               values:
                 addonChart: kube-ops-view
-                addonChartVersion: 1.2.2
-                addonChartRepository: https://charts.helm.sh/stable
+                addonChartVersion: 3.6.1
+                addonChartRepository: https://charts.christianhuth.de
               selector:
                 matchExpressions:
                   - key: enable_kube_ops_view
@@ -22,7 +22,7 @@ spec:
                 matchLabels:
                   environment: workspace1
               values:
-                addonChartVersion: 1.2.2
+                addonChartVersion: 3.6.1
 
   template:
     metadata:
@@ -39,8 +39,8 @@ spec:
           helm:
             releaseName: '{{values.addonChart}}'
             valueFiles:
-              - $values/{{metadata.annotations.addons_repo_basepath}}charts/addons/{{values.addonChart}}/values.yaml
-              - $values/{{metadata.annotations.addons_repo_basepath}}environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
+              #- $values/{{metadata.annotations.addons_repo_basepath}}charts/addons/{{values.addonChart}}/values.yaml
+              #- $values/{{metadata.annotations.addons_repo_basepath}}environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
               - $values/{{metadata.annotations.addons_repo_basepath}}clusters/{{name}}/addons/{{values.addonChart}}/values.yaml
             values: |
               service:
