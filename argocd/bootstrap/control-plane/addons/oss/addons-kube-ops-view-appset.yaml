@@ -41,7 +41,7 @@ spec:
             valueFiles:
               #- $values/{{metadata.annotations.addons_repo_basepath}}charts/addons/{{values.addonChart}}/values.yaml
               #- $values/{{metadata.annotations.addons_repo_basepath}}environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
-              - $values/{{metadata.annotations.addons_repo_basepath}}clusters/{{environment}}/addons/{{values.addonChart}}/values.yaml
+              - $values/{{metadata.annotations.addons_repo_basepath}}clusters/{{metadata.annotations.aws_cluster_name}}/addons/{{values.addonChart}}/values.yaml
             values: |
               service:
                 type: ClusterIP
