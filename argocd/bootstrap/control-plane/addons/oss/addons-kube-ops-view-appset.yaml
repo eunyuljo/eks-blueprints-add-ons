@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: addons-kube-ops-view
+spec:
+  generators:
+    - merge:
+        mergeKeys: [server]
+        generators:
+          - clusters:
+              values:
+                addonChart: kube-ops-view
+                addonChartVersion: 1.2.2
+                addonChartRepository: https://charts.helm.sh/stable
+              selector:
+                matchExpressions:
+                  - key: enable_kube_ops_view
+                    operator: In
+                    values: ['true']
+  template:
+    metadata:
+      name: 'addon-{{name}}-{{values.addonChart}}'
+    spec:
+      project: default
+      sources:
+        - repoURL: '{{metadata.annotations.addons_repo_url}}'
+          targetRevision: '{{metadata.annotations.addons_repo_revision}}'
+          ref: values
+        - chart: '{{values.addonChart}}'
+          repoURL: '{{values.addonChartRepository}}'
+          targetRevision: '{{values.addonChartVersion}}'
+          helm:
+            releaseName: '{{values.addonChart}}'
+            valueFiles:
+              - $values/{{metadata.annotations.addons_repo_basepath}}charts/addons/{{values.addonChart}}/values.yaml
+              - $values/{{metadata.annotations.addons_repo_basepath}}environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
+              - $values/{{metadata.annotations.addons_repo_basepath}}clusters/{{name}}/addons/{{values.addonChart}}/values.yaml
+            values: |
+              service:
+                type: ClusterIP
+      destination:
+        namespace: 'kube-ops-view'
+        name: '{{name}}'
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true

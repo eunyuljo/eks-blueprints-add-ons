@@ -37,6 +37,12 @@ spec:
                   environment: prod
               values:
                 addonChartVersion: 3.11.0
+          - clusters:
+              selector:
+                matchLabels:
+                  environment: workspace1
+              values:
+                addonChartVersion: 3.11.0
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
