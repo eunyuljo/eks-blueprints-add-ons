@@ -33,15 +33,15 @@ spec:
         - repoURL: '{{metadata.annotations.addons_repo_url}}'
           targetRevision: '{{metadata.annotations.addons_repo_revision}}'
           ref: values
-        - chart: '{{values.addonChart}}'
+        - chart: '{{values.addonChart}}/{{values.addonChart}}'
           repoURL: '{{values.addonChartRepository}}'
           targetRevision: '{{values.addonChartVersion}}'
           helm:
             releaseName: '{{values.addonChart}}'
             valueFiles:
               #- $values/{{metadata.annotations.addons_repo_basepath}}charts/addons/{{values.addonChart}}/values.yaml
-              #- $values/{{metadata.annotations.addons_repo_basepath}}environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
-              - $values/{{metadata.annotations.addons_repo_basepath}}clusters/{{metadata.annotations.aws_cluster_name}}/addons/{{values.addonChart}}/values.yaml
+              - $values/{{metadata.annotations.addons_repo_basepath}}environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
+              #- $values/{{metadata.annotations.addons_repo_basepath}}clusters/{{metadata.annotations.aws_cluster_name}}/addons/{{values.addonChart}}/values.yaml
             values: |
               service:
                 type: ClusterIP
