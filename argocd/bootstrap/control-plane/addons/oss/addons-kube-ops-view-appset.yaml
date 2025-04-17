@@ -22,7 +22,7 @@ spec:
                 matchLabels:
                   environment: workspace1
               values:
-                addonChartVersion: 1.1.1
+                addonChartVersion: 1.2.2
 
   template:
     metadata:
