@@ -1,0 +1,63 @@
+nameOverride: ""
+
+fullnameOverride: ""
+
+image:
+  repository: hjacobs/kube-ops-view
+  pullPolicy: Always
+  tag: "23.5.0"
+
+imagePullSecrets: []
+
+args: []
+
+replicaCount: 1
+
+revisionHistoryLimit: 10
+
+podAnnotations: {}
+
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+ingress:
+  enabled: true
+  annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+
+  ingressClassName: "nginx-tls"
+
+  hosts:
+    - host: kube-ops-view.example-mzc.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+redis:
+  architecture: standalone
+  auth:
+    enabled: false
+  enabled: false
