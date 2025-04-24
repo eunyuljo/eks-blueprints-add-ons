@@ -34,7 +34,7 @@ spec:
           - clusters:
               selector:
                 matchLabels:
-                  environment: prod
+                  environment: workspace2
               values:
                 addonChartVersion: 4.10.1
   template:
