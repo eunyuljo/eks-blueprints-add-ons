@@ -33,7 +33,7 @@ spec:
           - clusters:
               selector:
                 matchLabels:
-                  environment: prod
+                  environment: gitops
               values:
                 addonChartVersion: 0.0.9
   template:

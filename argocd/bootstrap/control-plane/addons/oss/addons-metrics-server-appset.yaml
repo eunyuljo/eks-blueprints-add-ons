@@ -43,6 +43,12 @@ spec:
                   environment: workspace1
               values:
                 addonChartVersion: 3.11.0
+          - clusters:
+              selector:
+                matchLabels:
+                  environment: gitops
+              values:
+                addonChartVersion: 3.11.0
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
