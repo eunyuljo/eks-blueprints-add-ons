@@ -203,6 +203,32 @@ configs:
 
           return health_status
 
+  rbac:
+    policy.default: role:readonly
+    policy.csv: |
+      # 플랫폼 관리자 - 모든 권한
+      g, platform-admin, role:admin
+      g, /platform-admin, role:admin
+      
+      # 개발자 - 특정 네임스페이스만 접근
+      p, role:developer, applications, *, dev/*, allow
+      p, role:developer, applications, *, staging/*, allow
+      p, role:developer, repositories, get, *, allow
+      p, role:developer, clusters, get, *, allow
+      g, developer, role:developer
+      g, /developer, role:developer
+      
+      # SRE - 운영 관련 접근
+      p, role:sre, applications, *, monitoring/*, allow
+      p, role:sre, applications, *, logging/*, allow
+      p, role:sre, applications, get, */*, allow
+      g, sre, role:sre
+      g, /sre, role:sre
+      
+      # 뷰어 - 읽기 전용
+      g, viewer, role:readonly
+      g, /viewer, role:readonly
+
 # -- Array of extra K8s manifests to deploy
 ## Note: Supports use of custom Helm templates
 ##       It gets handle in this form inside the argo-cd chart
