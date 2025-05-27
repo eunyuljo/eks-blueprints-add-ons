@@ -69,7 +69,7 @@ configs:
     # Keycloak client secret
     oidc.keycloak.clientSecret: "vU7G6vWksBhI9aOZOslpoO8Gu5GZtjT3"
   cm:
-    url: "https://argocd.example-mzc.com"
+    url: "https://af01f05cbaab543bbba089d2da9fc721-1489406920.ap-northeast-2.elb.amazonaws.com"
     oidc.config: |
       name: Keycloak
       issuer: https://keycloak.example-mzc.com/realms/argocd
