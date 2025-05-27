@@ -64,22 +64,8 @@ configs:
       type: helm
       url: public.ecr.aws
       enableOCI: 'true'
-
-  secret:
-    # Keycloak client secret
-    oidc.keycloak.clientSecret: "vU7G6vWksBhI9aOZOslpoO8Gu5GZtjT3"
   cm:
-    url: "https://argocd.example-mzc.com"
-    oidc.config: |
-      name: Keycloak
-      issuer: https://keycloak.example-mzc.com/realms/argocd
-      clientId: argocd
-      clientSecret: $oidc.keycloak.clientSecret
-      requestedScopes: ["openid", "profile", "email", "groups"]
-      requestedIDTokenClaims: {"groups": {"essential": true}}
-    
     application.resourceTrackingMethod: 'annotation' #use annotation for tracking required for Crossplane
-
     resource.exclusions: |
       - kinds:
         - ProviderConfigUsage
