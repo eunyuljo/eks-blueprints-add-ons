@@ -207,8 +207,8 @@ configs:
     policy.default: role:readonly
     policy.csv: |
       # 플랫폼 관리자 - 모든 권한
-      g, platform-admin, role:admin
-      g, /platform-admin, role:admin
+      g, argocd-admin, role:admin
+      g, /argocd-admin, role:admin
       
       # 개발자 - 특정 네임스페이스만 접근
       p, role:developer, applications, *, dev/*, allow
